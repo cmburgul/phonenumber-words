@@ -23,9 +23,8 @@ with open(dictionary) as d:
 
 def words_to_number(number):
     """ Converts words_to_number"""
-
-    number = "1-800-PAINTER"
     number = number.replace("-","")
+    number = number.upper()
     
     for ch in number:
 
@@ -99,9 +98,12 @@ def all_wordification(number, vocab, min_len=1):
                 elif (first <= 6):
                     op = number.replace(substr,w)
                     ans.add(str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:first]) + "-" + str(op[first:last+1]) + "-" + str(op[last+1:]))
+                elif (first > 7):
+                    op = number.replace(substr,w)
+                    ans = (str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:7]) + "-" + str(op[7:first]) +  str(op[first:last+1]) + "-" + str(op[last+1:]))
                 else:
                     op = number.replace(substr,w)
-                    ans.add(str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:7]) + "-" + str(op[7:first]) +  str(op[first:last+1]) + "-" + str(op[last+1:]))
+                    ans = (str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:7]) + "-" + str(op[7:first]) +  str(op[first:last+1]) + "-" + str(op[last+1:]))
                     
     return ans
                     
@@ -146,10 +148,13 @@ def number_to_word(number, vocab, min_len=1):
                     elif (first <= 6):
                         op = number.replace(substr,w)
                         ans = str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:first]) + "-" + str(op[first:last+1]) + "-" + str(op[last+1:])
+                    elif (first > 7):
+                        op = number.replace(substr,w)
+                        ans = (str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:7]) + "-" + str(op[7:first]) +  str(op[first:last+1]) + "-" + str(op[last+1:]))
                     else:
                         op = number.replace(substr,w)
-                        ans = str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:7]) + "-" + str(op[7:first]) +  str(op[first:last+1]) + "-" + str(op[last+1:])
-
+                        ans = (str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:7]) + "-" + str(op[7:first]) +  str(op[first:last+1]) + "-" + str(op[last+1:]))
+    
     return ans
 
 
@@ -158,6 +163,7 @@ if __name__ == '__main__':
     # number_to_word
     
     ph = "1-800-724-6837"
+    # ph = "1-800-356-9377"
     ans = number_to_word(ph, vocab, 1)
     print("Converting a number to wordified number ")
     print("number : ", ph)
@@ -166,6 +172,7 @@ if __name__ == '__main__':
     print("\n----------")
     # words_to_number
     ph = "1-800-PAINTER"
+    # ph = "1-800-Flowers"
     ans = words_to_number(ph)
     print("Converting a wordified number to number")
     print("wordified number : ", ph)
@@ -174,6 +181,7 @@ if __name__ == '__main__':
     print("\n----------")
     # number_to_words
     ph = "1-800-724-6837"
+    # ph = "1-800-356-9377"
     ans = all_wordification(ph, vocab)
     print("Converting a number to wordified numbers ")
     print("number : ", ph)
