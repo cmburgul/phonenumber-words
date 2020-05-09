@@ -11,9 +11,6 @@ mapping = {
     '8':['T','U','V'],
     '9':['W','X','Y','Z']}
 
-
-
-
 # words_to_number
 
 number = "1-800-PAINTER"
