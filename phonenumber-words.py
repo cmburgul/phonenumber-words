@@ -100,10 +100,10 @@ def all_wordification(number, vocab, min_len=1):
                     ans.add(str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:first]) + "-" + str(op[first:last+1]) + "-" + str(op[last+1:]))
                 elif (first > 7):
                     op = number.replace(substr,w)
-                    ans = (str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:7]) + "-" + str(op[7:first]) +  str(op[first:last+1]) + "-" + str(op[last+1:]))
+                    ans.add((str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:7]) + "-" + str(op[7:first]) +  str(op[first:last+1]) + "-" + str(op[last+1:])))
                 else:
                     op = number.replace(substr,w)
-                    ans = (str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:7]) + "-" + str(op[7:first]) +  str(op[first:last+1]) + "-" + str(op[last+1:]))
+                    ans.add((str(op[0]) + "-" + str(op[1:4]) + "-"  + str(op[4:7]) + "-" + str(op[7:first]) +  str(op[first:last+1]) + "-" + str(op[last+1:])))
                     
     return ans
                     
